@@ -7,6 +7,9 @@ import kotlin.coroutines.resume
 import kotlin.coroutines.resumeWithException
 import kotlin.coroutines.suspendCoroutine
 
+/**
+ * encapsulate the network request
+ */
 object SunnyWeatherNetWork {
 
     private val placeService = ServiceCreator.create<PlaceService>()

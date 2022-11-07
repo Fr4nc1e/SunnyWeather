@@ -12,6 +12,9 @@ object ServiceCreator {
         .addConverterFactory(GsonConverterFactory.create())
         .build()
 
+    /*
+    create a service, which is an interface
+     */
     fun <T> create(serviceClass: Class<T>): T = retrofit.create(serviceClass)
 
     inline fun <reified T> create(): T = create(T::class.java)

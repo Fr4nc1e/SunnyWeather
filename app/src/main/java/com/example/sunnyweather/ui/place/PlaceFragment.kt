@@ -17,19 +17,23 @@ import kotlinx.android.synthetic.main.fragment_place.*
 
 class PlaceFragment : Fragment() {
     val viewModel by lazy { ViewModelProvider(this).get(PlaceViewModel::class.java) }
+
     private lateinit var adapter: PlaceAdapter
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_place, container, false)
     }
+
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         val layoutManager = LinearLayoutManager(activity)
         recyclerView.layoutManager = layoutManager
         adapter = PlaceAdapter(this, viewModel.placeList)
         recyclerView.adapter = adapter
+
         searchPlaceEdit.addTextChangedListener { editable ->
             val content = editable.toString()
             if (content.isNotEmpty()) {
@@ -41,6 +45,7 @@ class PlaceFragment : Fragment() {
                 adapter.notifyDataSetChanged()
             }
         }
+
         viewModel.placeLiveData.observe(viewLifecycleOwner, Observer{ result ->
             val places = result.getOrNull()
             if (places != null) {

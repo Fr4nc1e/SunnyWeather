@@ -17,3 +17,10 @@ class SunnyWeatherApplication : Application() {
         context = applicationContext
     }
 }
+
+/**
+ * Remember to add the following code to the AndroidManifest.xml file
+ * <application
+ *    android:name=".SunnyWeatherApplication"
+ *    ...>
+ */
